@@ -1,0 +1,126 @@
+/*--------------------------------------------------------------
+# Import Modules
+--------------------------------------------------------------*/
+@import '../../node_modules/normalize.css/normalize';
+@import 'susy';
+@import "./node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+
+
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/animations';
+//@import 'base/containers';
+//@import 'base/grid';
+//@import 'base/spacing';
+@import 'base/wordpress';
+@import 'base/forms';
+
+/*--------------------------------------------------------------
+# Partials
+--------------------------------------------------------------*/
+@import 'partials/typography';
+//@import 'partials/buttons';
+@import 'partials/links';
+@import 'partials/colours';
+@import 'partials/helpers';
+@import 'partials/media';
+
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import 'components/header';
+@import 'components/sidebar';
+@import 'components/footer';
+
+/*--------------------------------------------------------------
+# Pages
+--------------------------------------------------------------*/
+@import 'pages/home';
+
+
+
+
+$small: 600px; // and higher
+$medium: 900px; // and higher
+$large: 1200px; // and higher
+$xlarge: 1800px; // and higher
+
+
+$susy: (
+  columns: 16,
+  global-box-sizing: border-sizing,
+  debug: (
+    image: show
+  )
+);
+
+@include border-box-sizing;
+
+.container {
+    height: 100vh;
+    @include container(1600px);
+}
+
+.sidebar-left {
+    height: 80vh;
+    background-color: red;
+    display: none;
+
+    @include breakpoint($small) {
+        display: block;
+        @include span(2 of 16);
+    }
+
+}
+
+
+.main {
+    height: 80vh;
+    
+    @include breakpoint($small) {
+        @include span(10 of 16);
+    }
+
+    .content {
+        height: 60vh;
+        background-color: rgba(100, 0,0,0.6);
+    }
+
+
+    .teaser {
+        height: 20vh;
+        background-color: rgba(10, 30, 100, 0.6);
+        padding: gutter(10);
+
+
+
+        @include breakpoint($small) {
+            @include span(2 of 10);
+            &:nth-child(5n) {
+                @include last;
+            }
+        }
+
+
+    }
+}
+
+.sidebar-right {
+    height: 80vh;
+    background: pink;
+    @include breakpoint($small) {
+        @include span(4 of 16 last);
+    }
+}
+
+
+.footer {
+    height: 20vh;
+    background: yellow;
+    clear: both;
+}
